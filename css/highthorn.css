@@ -1,0 +1,27 @@
+table {
+    padding: 10;
+
+    border: thin double #aaaa00;
+    /*border-top: thick double #00aa00;*/
+    /*border-spacing: 5*/
+}
+
+th {
+    background-color: #66ccff;
+}
+
+tr:nth-child(even) {
+    background: #eeeeee;
+}
+tr:nth-child(odd) {
+    background: #ffffff;
+}
+/*tr {
+	background-color: #333333;
+}*/
+/*.row {
+    background-color: #ffccff;
+}
+.row-alternate {
+	background-color: #ffffff;
+}*/
