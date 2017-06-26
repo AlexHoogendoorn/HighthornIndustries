@@ -2,9 +2,12 @@
 namespace highthornindustries;
 
 //use highhornindustries\database;
+use highthornindustries\repository as repo;
+use highthornindustries\model as model;
 
 require_once('database\database.php');
 require_once('repository\userrepository.php');
+require_once('model\user.php');
 require_once('startup.php');
 
 // $host = '127.0.0.1';
@@ -31,7 +34,9 @@ require_once('startup.php');
     <body>
         <form action="" method="post">
             <?php
+                echo '$_SESSION: ';
                 var_dump($_SESSION);
+                echo '<br>$_POST: ';
                 var_dump($_POST);
 
                 $submit_value = 'Add';
@@ -89,8 +94,13 @@ require_once('startup.php');
                                     'password' => $_POST['password']
                                     );
 
-                                $repo = new UserRepository();
-                                $repo->CreateUser();
+                                $user = new model\User();
+                                $user->Create($user_data);
+                                $repo = new repo\UserRepository();
+                                $repo->CreateUser($user);
+
+                                unset($_SESSION['action']);
+                                header("Location: users.php");
                             }
                         }
                         else {
